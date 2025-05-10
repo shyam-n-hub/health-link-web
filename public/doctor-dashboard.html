@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor Dashboard - MediCare Healthcare System</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="logo">
+        <i class="fa fa-hospital-o"></i>
+        <h1>MediCare</h1>
+      </div>
+      <nav class="navigation">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="auth-buttons">
+          <a href="#" id="logout-btn" class="btn btn-outline">Logout</a>
+        </div>
+        <div class="menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="dashboard-container">
+    <aside class="dashboard-sidebar">
+      <h3>Doctor Dashboard</h3>
+      <ul class="dashboard-menu">
+        <li><a href="#" class="active"><i class="fa fa-users"></i> Patient Issues</a></li>
+        <li><a href="#"><i class="fa fa-history"></i> Response History</a></li>
+        <li><a href="#"><i class="fa fa-user-md"></i> Profile</a></li>
+        <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
+      </ul>
+    </aside>
+    
+    <main class="dashboard-main">
+      <div class="dashboard-header">
+        <h2>Patient Issues</h2>
+        <p>Review and respond to patient health concerns</p>
+      </div>
+      
+      <div class="dashboard-card">
+        <h3>Pending Issues</h3>
+        <div id="patientIssuesList" class="issues-list">
+          <!-- Patient issues will be loaded here dynamically -->
+          <p>Loading patient issues...</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-logo">
+            <i class="fa fa-hospital-o"></i>
+            <h2>MediCare</h2>
+          </div>
+          <p>Providing quality healthcare services to improve patient outcomes and experiences.</p>
+          <div class="social-links">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Contact Info</h3>
+          <ul class="contact-info">
+            <li><i class="fa fa-map-marker"></i> 123 Medical Center Dr.<br>Healthcare City, HC 12345</li>
+            <li><i class="fa fa-phone"></i> (123) 456-7890</li>
+            <li><i class="fa fa-envelope"></i> info@medicare-health.com</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <script>document.write(new Date().getFullYear())</script> MediCare Health System. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+  
+  <!-- Custom JS -->
+  <script src="js/app.js"></script>
+</body>
+</html>

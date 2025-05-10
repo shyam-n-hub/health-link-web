@@ -1,0 +1,237 @@
+
+import { useEffect } from "react";
+
+const HtmlWrapper = () => {
+  useEffect(() => {
+    // Load Firebase SDK
+    const loadFirebase = () => {
+      const script = document.createElement('script');
+      script.src = 'https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js';
+      script.async = true;
+      document.body.appendChild(script);
+
+      script.onload = () => {
+        // Once Firebase core is loaded, load auth and database
+        const authScript = document.createElement('script');
+        authScript.src = 'https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js';
+        authScript.async = true;
+        document.body.appendChild(authScript);
+
+        const dbScript = document.createElement('script');
+        dbScript.src = 'https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js';
+        dbScript.async = true;
+        document.body.appendChild(dbScript);
+
+        // Initialize our app after Firebase is loaded
+        const appScript = document.createElement('script');
+        appScript.src = '/js/app.js';
+        appScript.async = true;
+        document.body.appendChild(appScript);
+      };
+    };
+
+    // Load our CSS
+    const loadCss = () => {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = '/css/styles.css';
+      document.head.appendChild(link);
+    };
+
+    loadCss();
+    loadFirebase();
+
+    return () => {
+      // Clean up scripts when component unmounts
+      document.querySelectorAll('script[src*="firebase"], script[src="/js/app.js"]').forEach(script => {
+        if (script.parentNode) {
+          script.parentNode.removeChild(script);
+        }
+      });
+    };
+  }, []);
+
+  return (
+    <div dangerouslySetInnerHTML={{ __html: `
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MediCare - Healthcare Management System</title>
+        <link rel="stylesheet" href="/css/styles.css">
+      </head>
+      <body>
+        <header class="header">
+          <div class="container">
+            <div class="logo">
+              <i class="fa fa-hospital-o"></i>
+              <h1>MediCare</h1>
+            </div>
+            <nav class="navigation">
+              <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="contact.html">Contact</a></li>
+              </ul>
+              <div class="auth-buttons">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+              </div>
+              <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </nav>
+          </div>
+        </header>
+
+        <main>
+          <!-- Hero Section -->
+          <section class="hero">
+            <div class="container">
+              <div class="hero-content">
+                <h1>Your Health, Our Priority</h1>
+                <p>Connect with doctors, manage your health records, and get the care you deserve with our integrated healthcare system.</p>
+                <div class="hero-buttons">
+                  <a href="signup.html" class="btn btn-light">Get Started</a>
+                  <a href="login.html" class="btn btn-outline-light">Login</a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Features Section -->
+          <section class="features">
+            <div class="container">
+              <div class="section-header">
+                <h2>How It Works</h2>
+                <p>Our platform connects patients with healthcare professionals for seamless communication and care</p>
+              </div>
+
+              <div class="features-grid">
+                <div class="feature-card">
+                  <div class="feature-icon">
+                    <i class="fa fa-clipboard"></i>
+                  </div>
+                  <h3>Register & Share Issues</h3>
+                  <p>Sign up and fill out your health information. Describe your symptoms or health concerns.</p>
+                </div>
+
+                <div class="feature-card">
+                  <div class="feature-icon">
+                    <i class="fa fa-stethoscope"></i>
+                  </div>
+                  <h3>Doctor Review</h3>
+                  <p>Doctors receive your information and review your case with careful attention to detail.</p>
+                </div>
+
+                <div class="feature-card">
+                  <div class="feature-icon">
+                    <i class="fa fa-heartbeat"></i>
+                  </div>
+                  <h3>Receive Care Plan</h3>
+                  <p>Get personalized treatment plans, prescriptions, and follow-up instructions.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Benefits Section -->
+          <section class="benefits">
+            <div class="container">
+              <div class="section-header">
+                <h2>Benefits of Our Platform</h2>
+                <p>Experience healthcare like never before with our innovative solution</p>
+              </div>
+
+              <div class="benefits-grid">
+                <div class="benefit-item">
+                  <i class="fa fa-check-circle"></i>
+                  <p>Quick access to healthcare professionals</p>
+                </div>
+                <div class="benefit-item">
+                  <i class="fa fa-check-circle"></i>
+                  <p>Secure storage of your medical history</p>
+                </div>
+                <div class="benefit-item">
+                  <i class="fa fa-check-circle"></i>
+                  <p>Convenient prescription delivery</p>
+                </div>
+                <div class="benefit-item">
+                  <i class="fa fa-check-circle"></i>
+                  <p>Easy scheduling of appointments</p>
+                </div>
+                <div class="benefit-item">
+                  <i class="fa fa-check-circle"></i>
+                  <p>Reduced wait times for consultation</p>
+                </div>
+                <div class="benefit-item">
+                  <i class="fa fa-check-circle"></i>
+                  <p>Continuous care and follow-up</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- CTA Section -->
+          <section class="cta">
+            <div class="container">
+              <h2>Ready to take control of your health?</h2>
+              <p>Join thousands of patients who are already experiencing the benefits of our healthcare platform.</p>
+              <a href="signup.html" class="btn btn-light">Get Started Today <i class="fa fa-arrow-right"></i></a>
+            </div>
+          </section>
+        </main>
+
+        <footer class="footer">
+          <div class="container">
+            <div class="footer-content">
+              <div class="footer-section">
+                <div class="footer-logo">
+                  <i class="fa fa-hospital-o"></i>
+                  <h2>MediCare</h2>
+                </div>
+                <p>Providing quality healthcare services to improve patient outcomes and experiences.</p>
+                <div class="social-links">
+                  <a href="#"><i class="fa fa-facebook"></i></a>
+                  <a href="#"><i class="fa fa-twitter"></i></a>
+                  <a href="#"><i class="fa fa-instagram"></i></a>
+                </div>
+              </div>
+
+              <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="login.html">Login</a></li>
+                  <li><a href="signup.html">Sign Up</a></li>
+                  <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+              </div>
+
+              <div class="footer-section">
+                <h3>Contact Info</h3>
+                <ul class="contact-info">
+                  <li><i class="fa fa-map-marker"></i> 123 Medical Center Dr.<br>Healthcare City, HC 12345</li>
+                  <li><i class="fa fa-phone"></i> (123) 456-7890</li>
+                  <li><i class="fa fa-envelope"></i> info@medicare-health.com</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="footer-bottom">
+              <p>&copy; <script>document.write(new Date().getFullYear())</script> MediCare Health System. All rights reserved.</p>
+            </div>
+          </div>
+        </footer>
+
+        <!-- Font Awesome for icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      </body>
+      </html>
+    `}} />
+  );
+};
+
+export default HtmlWrapper;
